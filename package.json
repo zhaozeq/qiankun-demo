@@ -1,0 +1,32 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "基于微前端的个人网站",
+  "scripts": {
+    "install": "npm-run-all --serial install:*",
+    "install:main": "cd main && tyarn",
+    "install:sub-tensorflow": "cd sub-tensorflow && tyarn",
+    "install:sub-umiApp": "cd sub-umiApp && tyarn",
+    "start": "npm-run-all --parallel start:*",
+    "start:sub-tensorflow": "cd sub-tensorflow && npm start",
+    "start:sub-umiApp": "cd sub-umiApp && npm start",
+    "start:main": "cd main && npm start",
+    "build": "npm-run-all build:* && bash ./scripts/bundle.sh",
+    "build:sub-tensorflow": "cd sub-tensorflow && npm run build",
+    "build:sub-umiApp": "cd sub-umiApp && npm run build",
+    "build:main": "cd main && npm run build"
+  },
+  "keywords": [
+    "qiankun",
+    "typeScript",
+    "react"
+  ],
+  "author": "zhaozeq@foxmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {
+    "create-umi": "^0.27.0"
+  }
+}

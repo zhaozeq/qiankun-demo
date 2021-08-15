@@ -1,0 +1,50 @@
+.coder {
+  position: relative;
+  border: 1px solid #d6dee6;
+  button {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    z-index: 999;
+  }
+  textarea {
+    border: none !important;
+    padding: 4px 40px !important;
+    font-size: 12px;
+    font-weight: 300;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  .lineBlock {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 30px;
+    color: #bfbfbf;
+    background: #f7f7f7;
+    text-align: right;
+    span {
+      display: block;
+      padding: 0 10px;
+      font-weight: 300;
+      font-size: 12px;
+      &:first-child:not(:nth-of-type(2)) {
+        padding-top: 4px;
+      }
+    }
+  }
+
+  :global(.CodeMirror) {
+    height: auto !important;
+  }
+  :global(.CodeMirror-scroll) {
+    height: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
+    min-height: 100px;
+    max-height: 600px;
+  }
+}
