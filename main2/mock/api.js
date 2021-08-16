@@ -1,11 +1,11 @@
 export default {
   'GET /api/apps': [
     {
-      name: 'app1',
-      entry: 'http://localhost:7002/app1',
-      to: '/app1',
+      name: 'blog',
+      entry: 'http://localhost:7002/blog',
+      to: '/blog',
       props: {
-        testProp1: 'app1',
+        testProp1: 'blog',
       },
     },
   ],
