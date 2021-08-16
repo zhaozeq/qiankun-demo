@@ -20,6 +20,13 @@ const loader = (loading) => render({ loading })
 
 registerMicroApps(
   [
+    {
+      name: "umiApp",
+      entry: "//localhost:7000",
+      container: "#subapp-viewport",
+      loader,
+      activeRule: "/umiApp",
+    },
     // {
     //   name: "tensorflow",
     //   entry: "//localhost:7001",
