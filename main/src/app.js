@@ -12,18 +12,13 @@ export const qiankun = request('/apps').then((apps) => ({
     {
       path: '/blog',
       microApp: 'blog',
+      // microAppProps: {
+      //   autoSetLoading: true,
+      // },
       menu: {
         name: '个人博客', // 兼容此写法
         icon: <UserOutlined />,
       },
-      // microAppProps: {
-      //   autoSetLoading: true,
-      //   className: 'appClassName',
-      //   wrapperClassName: 'wrapperClass',
-      //   loader: (loading) => {
-      //     return loading ? <div>runtime loading</div> : null;
-      //   },
-      // },
     },
     {
       path: '/tensorflow',

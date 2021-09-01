@@ -1,5 +1,5 @@
-import { PlusOutlined, HomeOutlined, ContactsOutlined, ClusterOutlined } from '@ant-design/icons';
-import { Avatar, Card, Col, Divider, Input, Row, Tag } from 'antd';
+import { PlusOutlined, MailOutlined, GithubOutlined, BookOutlined } from '@ant-design/icons';
+import { Avatar, Card, Col, Divider, Input, Row, Tag, Space } from 'antd';
 import React, { useState, useRef } from 'react';
 import { GridContent } from '@ant-design/pro-layout';
 import { Link, useRequest } from 'umi';
@@ -7,7 +7,7 @@ import type { RouteChildrenProps } from 'react-router';
 import Projects from './components/Projects';
 import Articles from './components/Articles';
 import Applications from './components/Applications';
-import type { CurrentUser, TagType, tabKeyType } from './data.d';
+import type { CurrentUser, tabKeyType } from './data.d';
 import { queryCurrent } from './service';
 import styles from './Center.less';
 
@@ -40,12 +40,14 @@ const operationTabList = [
 
 const TagList: React.FC<{ tags: CurrentUser['tags'] }> = ({ tags }) => {
   const ref = useRef<Input | null>(null);
-  const [newTags, setNewTags] = useState<TagType[]>([]);
+  const [newTags, setNewTags] = useState<string[]>([]);
   const [inputVisible, setInputVisible] = useState<boolean>(false);
+  const [tagIsClose, setTagNeedClose] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>('');
 
   const showInput = () => {
     setInputVisible(true);
+    setTagNeedClose(true);
     if (ref.current) {
       // eslint-disable-next-line no-unused-expressions
       ref.current?.focus();
@@ -58,19 +60,22 @@ const TagList: React.FC<{ tags: CurrentUser['tags'] }> = ({ tags }) => {
 
   const handleInputConfirm = () => {
     let tempsTags = [...newTags];
-    if (inputValue && tempsTags.filter((tag) => tag.label === inputValue).length === 0) {
-      tempsTags = [...tempsTags, { key: `new-${tempsTags.length}`, label: inputValue }];
+    if (inputValue && tempsTags.filter((tag) => tag === inputValue).length === 0) {
+      tempsTags.push(inputValue);
     }
     setNewTags(tempsTags);
     setInputVisible(false);
+    setTagNeedClose(false);
     setInputValue('');
   };
 
   return (
     <div className={styles.tags}>
-      <div className={styles.tagsTitle}>标签</div>
-      {(tags || []).concat(newTags).map((item) => (
-        <Tag key={item.key}>{item.label}</Tag>
+      <div className={styles.tagsTitle}>技术栈</div>
+      {(tags || []).concat(newTags).map((item, i) => (
+        <Tag closable={tagIsClose} key={i}>
+          {item}
+        </Tag>
       ))}
       {inputVisible && (
         <Input
@@ -101,41 +106,36 @@ const Center: React.FC<RouteChildrenProps> = () => {
   });
 
   //  渲染用户信息
-  const renderUserInfo = ({ title, group, geographic }: Partial<CurrentUser>) => {
+  const renderUserInfo = ({ gitHub, CSDN, email }: Partial<CurrentUser>) => {
     return (
       <div className={styles.detail}>
         <p>
-          <ContactsOutlined
+          <GithubOutlined
             style={{
               marginRight: 8,
             }}
           />
-          {title}
+          <a href={gitHub} target="_blank">
+            {gitHub}
+          </a>
         </p>
         <p>
-          <ClusterOutlined
+          <BookOutlined
             style={{
               marginRight: 8,
             }}
           />
-          {group}
+          <a href={CSDN} target="_blank">
+            {CSDN}
+          </a>
         </p>
         <p>
-          <HomeOutlined
+          <MailOutlined
             style={{
               marginRight: 8,
             }}
           />
-          {(geographic || { province: { label: '' } }).province.label}
-          {
-            (
-              geographic || {
-                city: {
-                  label: '',
-                },
-              }
-            ).city.label
-          }
+          <a href={`mailto:${email}`}>{email}</a>
         </p>
       </div>
     );
@@ -157,27 +157,31 @@ const Center: React.FC<RouteChildrenProps> = () => {
 
   return (
     <GridContent>
-      <Row gutter={24}>
-        <Col lg={7} md={24}>
-          <Card bordered={false} style={{ marginBottom: 24 }} loading={loading}>
+      <Row gutter={1}>
+        <Col lg={7} md={24} className={styles.leftCardCol}>
+          <Card
+            bordered={false}
+            loading={loading}
+            style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'auto' }}
+          >
             {!loading && currentUser && (
               <div>
                 <div className={styles.avatarHolder}>
-                  <img alt="" src={currentUser.avatar} />
+                  <img alt={currentUser.name} src={currentUser.avatar} />
                   <div className={styles.name}>{currentUser.name}</div>
-                  <div>{currentUser?.signature}</div>
+                  <div>{currentUser.profession}</div>
                 </div>
                 {renderUserInfo(currentUser)}
                 <Divider dashed />
                 <TagList tags={currentUser.tags || []} />
                 <Divider style={{ marginTop: 16 }} dashed />
                 <div className={styles.team}>
-                  <div className={styles.teamTitle}>团队</div>
+                  <div className={styles.teamTitle}>工具类</div>
                   <Row gutter={36}>
                     {currentUser.notice &&
                       currentUser.notice.map((item) => (
                         <Col key={item.id} lg={24} xl={12}>
-                          <Link to={item.href}>
+                          <Link to={item.href} replace>
                             <Avatar size="small" src={item.logo} />
                             {item.member}
                           </Link>

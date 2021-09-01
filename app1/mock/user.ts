@@ -2,16 +2,6 @@
 import type { Request, Response } from 'express';
 import type { ListItemDataType } from '@/pages/account/center/data';
 
-const titles = [
-  'Alipay',
-  'Angular',
-  'Ant Design',
-  'Ant Design Pro',
-  'Bootstrap',
-  'React',
-  'Vue',
-  'Webpack',
-];
 const avatars = [
   'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png', // Alipay
   'https://gw.alipayobjects.com/zos/rmsportal/zOsKZmFRdUtvpqCImOVY.png', // Angular
@@ -37,118 +27,88 @@ const desc = [
   '那时候我只会想自己想要什么，从不想自己拥有什么',
 ];
 
-const user = [
-  '付小小',
-  '曲丽丽',
-  '林东东',
-  '周星星',
-  '吴加好',
-  '朱偏右',
-  '鱼酱',
-  '乐哥',
-  '谭小仪',
-  '仲尼',
-];
+const user = ['付小小', '曲丽丽', '林东东', '周星星', '吴加好', '朱偏右', '鱼酱', '乐哥', '谭小仪', '仲尼'];
 
 // 当前用户信息
 const currentUseDetail = {
-  name: 'Serati Ma',
-  avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
+  name: '赵泽清🇨🇳',
+  avatar: '/images/avatar.jpg',
+  profession: '工程技术·IoT技术·前端',
   userid: '00000001',
-  email: 'antdesign@alipay.com',
-  signature: '海纳百川，有容乃大',
-  title: '交互专家',
-  group: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED',
+  email: 'zhaozeq@foxmail.com',
+  gitHub: 'https://github.com/zhaozeq',
+  CSDN: 'https://blog.csdn.net/qq_36571602',
   tags: [
-    {
-      key: '0',
-      label: '很有想法的',
-    },
-    {
-      key: '1',
-      label: '专注设计',
-    },
-    {
-      key: '2',
-      label: '辣~',
-    },
-    {
-      key: '3',
-      label: '大长腿',
-    },
-    {
-      key: '4',
-      label: '川妹子',
-    },
-    {
-      key: '5',
-      label: '海纳百川',
-    },
+    'react',
+    'vue',
+    'git',
+    'webpack',
+    'npm',
+    'TypeScript',
+    'redux',
+    'mysql',
+    'MongoDB',
+    'Sass',
+    'Prettier',
+    'Html5',
+    'egg',
   ],
   notice: [
     {
       id: 'xxx1',
-      title: titles[0],
       logo: avatars[0],
-      description: '那是一种内在的东西，他们到达不了，也无法触及的',
+      member: 'md文件解析器',
+      description: 'markdown 文件在线预览，导出等',
       updatedAt: new Date(),
-      member: '科学搬砖组',
-      href: '',
+      href: '//a',
       memberLink: '',
     },
     {
       id: 'xxx2',
-      title: titles[1],
       logo: avatars[1],
-      description: '希望是一个好东西，也许是最好的，好东西是不会消亡的',
+      member: 'vue-to-react',
+      description: 'vue-to-react-tool 将.vue文件转换成.jsx文件',
       updatedAt: new Date('2017-07-24'),
-      member: '全组都是吴彦祖',
       href: '',
       memberLink: '',
     },
     {
       id: 'xxx3',
-      title: titles[2],
       logo: avatars[2],
-      description: '城镇中有那么多的酒馆，她却偏偏走进了我的酒馆',
+      member: 'TF 代码调试',
+      description: '在线调试 TensorFlow.js 代码',
       updatedAt: new Date(),
-      member: '中二少女团',
       href: '',
       memberLink: '',
     },
     {
       id: 'xxx4',
-      title: titles[3],
       logo: avatars[3],
+      member: '暂无数据',
       description: '那时候我只会想自己想要什么，从不想自己拥有什么',
       updatedAt: new Date('2017-07-23'),
-      member: '程序员日常',
       href: '',
       memberLink: '',
     },
     {
       id: 'xxx5',
-      title: titles[4],
       logo: avatars[4],
+      member: '暂无数据',
       description: '凛冬将至',
       updatedAt: new Date('2017-07-23'),
-      member: '高逼格设计天团',
       href: '',
       memberLink: '',
     },
     {
       id: 'xxx6',
-      title: titles[5],
       logo: avatars[5],
+      member: '排版好看点',
       description: '生命就像一盒巧克力，结果往往出人意料',
       updatedAt: new Date('2017-07-23'),
-      member: '骗你来学计算机',
       href: '',
       memberLink: '',
     },
   ],
-  notifyCount: 12,
-  unreadCount: 11,
   country: 'China',
   geographic: {
     province: {
@@ -156,12 +116,10 @@ const currentUseDetail = {
       key: '330000',
     },
     city: {
-      label: '杭州市',
-      key: '330100',
+      label: '绍兴市',
+      key: '312032',
     },
   },
-  address: '西湖区工专路 77 号',
-  phone: '0752-268888888',
 };
 
 function fakeList(count: number): ListItemDataType[] {
@@ -170,14 +128,10 @@ function fakeList(count: number): ListItemDataType[] {
     list.push({
       id: `fake-list-${i}`,
       owner: user[i % 10],
-      title: titles[i % 8],
+
       avatar: avatars[i % 8],
       cover: parseInt(`${i / 4}`, 10) % 2 === 0 ? covers[i % 4] : covers[3 - (i % 4)],
-      status: ['active', 'exception', 'normal'][i % 3] as
-        | 'normal'
-        | 'exception'
-        | 'active'
-        | 'success',
+      status: ['active', 'exception', 'normal'][i % 3] as 'normal' | 'exception' | 'active' | 'success',
       percent: Math.ceil(Math.random() * 50) + 50,
       logo: avatars[i % 8],
       href: 'https://ant.design',
@@ -223,6 +177,7 @@ function getFakeList(req: Request, res: Response) {
 
   const result = fakeList(count);
   return res.json({
+    code: 0,
     data: {
       list: result,
     },
@@ -232,6 +187,7 @@ function getFakeList(req: Request, res: Response) {
 // 获取用户信息
 function getCurrentUser(req: Request, res: Response) {
   return res.json({
+    code: 0,
     data: currentUseDetail,
   });
 }

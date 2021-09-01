@@ -1,8 +1,4 @@
 export type tabKeyType = 'articles' | 'applications' | 'projects';
-export interface TagType {
-  key: string;
-  label: string;
-}
 
 export type GeographicType = {
   province: {
@@ -32,10 +28,10 @@ export type CurrentUser = {
   userid: string;
   notice: NoticeType[];
   email: string;
-  signature: string;
-  title: string;
-  group: string;
-  tags: TagType[];
+  profession: string;
+  gitHub: string;
+  CSDN: string;
+  tags: string[];
   notifyCount: number;
   unreadCount: number;
   country: string;
