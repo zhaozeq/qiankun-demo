@@ -19,7 +19,7 @@ module.exports = {
       modules: true,
       sourceMap: isDev,
     };
-    
+
     config.module.rules[1].oneOf = [
       ...config.module.rules[1].oneOf,
       {
@@ -88,19 +88,21 @@ module.exports = {
     //     shared: ['react', 'react-dom'],
     //   }),
     // ];
-    console.log(config);
+    // console.log(config);
     return config;
   },
-
-  devServer: _ => {
-    const config = _;
-    config.headers = {
-      'Access-Control-Allow-Origin': '*',
+  devServer: configFunction => {
+    return (proxy, allowedHost) => {
+      const config = configFunction(proxy, allowedHost);
+      config.headers = {
+        'Access-Control-Allow-Origin': '*',
+      };
+      config.historyApiFallback = true;
+      config.watchContentBase = false;
+      config.hot = false;
+      config.liveReload = false;
+      // console.log(config, 'config');
+      return config;
     };
-    config.historyApiFallback = true;
-    config.watchContentBase = false;
-    // config.hot = false;
-    // config.liveReload = false;
-    return config;
   },
 };

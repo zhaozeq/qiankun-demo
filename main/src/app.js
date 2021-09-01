@@ -12,9 +12,6 @@ export const qiankun = request('/apps').then((apps) => ({
     {
       path: '/blog',
       microApp: 'blog',
-      // microAppProps: {
-      //   autoSetLoading: true,
-      // },
       menu: {
         name: '个人博客', // 兼容此写法
         icon: <UserOutlined />,
@@ -23,6 +20,11 @@ export const qiankun = request('/apps').then((apps) => ({
     {
       path: '/tensorflow',
       microApp: 'tensorflow',
+      // microAppProps: {
+      //   autoSetLoading: boolean,
+      //   className: string,
+      //   wrapperClassName: string,
+      // },
       menu: {
         name: 'tensorflow', // 兼容此写法
         icon: <BugOutlined />,

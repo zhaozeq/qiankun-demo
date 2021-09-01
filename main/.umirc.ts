@@ -7,12 +7,12 @@ export default defineConfig({
       target: 'http://localhost:7002',
       changeOrigin: true,
     },
-    '/api/app2': {
-      target: 'http://localhost:8002',
+    '/api/tensorflow': {
+      target: 'http://localhost:7003',
       changeOrigin: true,
     },
     '/api/app3': {
-      target: 'http://localhost:8003',
+      target: 'http://localhost:7004',
       changeOrigin: true,
     },
   },

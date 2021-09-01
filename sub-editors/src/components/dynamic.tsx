@@ -1,7 +1,12 @@
 // @ts-nocheck
+import { Spin } from 'antd';
 import React, { Component } from 'react';
 
-const defaultLoadingComponent = () => null;
+const defaultLoadingComponent = () => (
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh' }}>
+    <Spin spinning />
+  </div>
+);
 
 type Props = {
   component: () => Promise<any>;
