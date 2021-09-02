@@ -1,6 +1,7 @@
 import { defineConfig } from 'umi';
 
 export default defineConfig({
+  outputPath: '../dist/blog',
   alias: { '@/*': 'src/*' },
   nodeModulesTransform: {
     type: 'none',

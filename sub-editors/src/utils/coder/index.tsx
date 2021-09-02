@@ -31,10 +31,7 @@ export default function Coder({ value }: CoderType) {
           theme: 'darcula',
           lineNumbers: true,
         }}
-        // onBeforeChange={(editor, data, value) => {
-        //   setData(value);
-        // }}
-        onChange={(editor, data, value) => {
+        onBeforeChange={(editor, data, value) => {
           setData(value);
         }}
       />

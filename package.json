@@ -10,10 +10,9 @@
     "start": "npm-run-all --parallel start:*",
     "start:app1": "cd app1 && npm start",
     "start:main": "cd main && npm start",
-    "build": "npm-run-all build:* && bash ./scripts/bundle.sh",
-    "build:sub-tensorflow": "cd sub-tensorflow && npm run build",
-    "build:sub-umiApp": "cd sub-umiApp && npm run build",
-    "build:main": "cd main && npm run build"
+    "build": "cd main && npm run && npm-run-all build:sub-*",
+    "build:sub-editors": "cd sub-editors && npm run build",
+    "build:sub-blog": "cd sub-blog && npm run build"
   },
   "keywords": [
     "qiankun",

@@ -2,6 +2,8 @@
 import { Spin } from 'antd';
 import React, { Component } from 'react';
 
+import Animate from './Animate';
+
 const defaultLoadingComponent = () => (
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh' }}>
     <Spin spinning />
@@ -50,7 +52,12 @@ export default class Dynamic extends Component<Props, State> {
   render() {
     const { AsyncComponent } = this.state;
     const { LoadingComponent } = this;
-    if (AsyncComponent) return <AsyncComponent {...this.props} />;
+    if (AsyncComponent)
+      return (
+        <Animate component>
+          <AsyncComponent {...this.props} />
+        </Animate>
+      );
     return <LoadingComponent {...this.props} />;
   }
 }

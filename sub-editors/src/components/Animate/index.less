@@ -1,0 +1,154 @@
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both
+}
+
+/* 淡入 */
+.saas-fadein {
+  animation-name: fadein;
+}
+/* 淡入-从上 */
+.saas-fadeTin {
+  animation-name: fadeTin;
+}
+/* 淡入-从右 */
+.saas-fadeRin {
+  animation-name: fadeRin;
+}
+/* 淡入-从下 */
+.saas-fadeBin {
+  animation-name: fadeBin;
+}
+/* 淡入-从左 */
+.saas-fadeLin {
+  animation-name: fadeLin;
+}
+/* 淡出 */
+.saas-fadeout {
+  animation-name: fadeout;
+}
+/* 淡出-向上 */
+.saas-fadeTout {
+  animation-name: fadeTout;
+}
+/* 淡出-向右 */
+.saas-fadeRout {
+  animation-name: fadeRout;
+}
+/* 淡出-向下 */
+.saas-fadeBout {
+  animation-name: fadeBout;
+}
+
+/* 淡入 */
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 淡入-从上 */
+@keyframes fadeTin {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 淡入-从右 */
+@keyframes fadeRin {
+  0% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 淡入-从下 */
+@keyframes fadeBin {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* 淡入-从左 */
+@keyframes fadeLin {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 淡出 */
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 淡出-向上 */
+@keyframes fadeTout {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+/* 淡出-向右 */
+@keyframes fadeRout {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+}
+/* 淡出-向下 */
+@keyframes fadeBout {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* 淡出-向左 */
+@keyframes fadeLout {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+}

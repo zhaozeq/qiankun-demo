@@ -1,7 +1,9 @@
 import { defineConfig } from 'umi';
+import path from 'path';
 
 export default defineConfig({
   favicon: '/images/favicon-32x32-next.ico',
+  outputPath: '../dist/',
   proxy: {
     '/api/blog': {
       target: 'http://localhost:7002',
@@ -30,7 +32,6 @@ export default defineConfig({
   qiankun: {
     master: {},
   },
-
   layout: {
     name: 'Welcome',
     logo: '/images/favicon-32x32-next.ico',
