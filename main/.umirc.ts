@@ -3,7 +3,7 @@ import path from 'path';
 
 export default defineConfig({
   favicon: '/images/favicon-32x32-next.ico',
-  outputPath: '../dist/',
+  outputPath: '../build/',
   proxy: {
     '/api/blog': {
       target: 'http://localhost:7002',

@@ -5,6 +5,7 @@ const autoprefixer = require('autoprefixer');
 const { name } = require('./package');
 const isDev = process.env.NODE_ENV === 'development';
 const DEFAULT_BROWSERS = ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 9'];
+const PUBLIC = '/tensorflow/';
 
 module.exports = {
   webpack: config => {
@@ -12,7 +13,10 @@ module.exports = {
     config.output.libraryTarget = 'umd';
     config.output.jsonpFunction = `webpackJsonp_${name}`;
     config.output.globalObject = 'window';
+    config.output.path = path.resolve(__dirname, '../build/editors');
+    config.output.publicPath = PUBLIC;
 
+    config.devtool = isDev ? config.devtool : false;
     /* sass文件支持module */
     config.module.rules[1].oneOf[6].use[1].options = {
       importLoaders: 3,
@@ -101,7 +105,7 @@ module.exports = {
       config.watchContentBase = false;
       config.hot = false;
       config.liveReload = false;
-      // console.log(config, 'config');
+      config.publicPath = PUBLIC;
       return config;
     };
   },

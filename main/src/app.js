@@ -4,16 +4,14 @@ import { UserOutlined, BugOutlined } from '@ant-design/icons';
 const routesRemote = [
   {
     name: 'blog',
-    entry: 'http://localhost:7002',
-    to: '/blog',
+    entry: 'http://localhost:7002/blog/',
     props: {
       testProp: 'blog',
     },
   },
   {
     name: 'tensorflow',
-    entry: 'http://localhost:7003',
-    to: '/tensorflow',
+    entry: 'http://localhost:7003/tensorflow/',
     props: {
       testProp: 'tensorflow',
     },

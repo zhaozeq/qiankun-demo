@@ -1,5 +1,5 @@
 import { PlusOutlined, MailOutlined, GithubOutlined, BookOutlined } from '@ant-design/icons';
-import { Avatar, Card, Col, Divider, Input, Row, Tag, Space } from 'antd';
+import { Avatar, Card, Col, Divider, Input, Row, Tag } from 'antd';
 import React, { useState, useRef } from 'react';
 import { GridContent } from '@ant-design/pro-layout';
 import { Link, useRequest } from 'umi';
@@ -101,9 +101,12 @@ const TagList: React.FC<{ tags: CurrentUser['tags'] }> = ({ tags }) => {
 const Center: React.FC<RouteChildrenProps> = () => {
   const [tabKey, setTabKey] = useState<tabKeyType>('articles');
   //  获取用户信息
-  const { data: currentUser, loading } = useRequest(() => {
-    return queryCurrent();
-  });
+  const { data: currentUser, loading } = useRequest(
+    () => {
+      return queryCurrent();
+    },
+    { onError: (err) => console.log(err) },
+  );
 
   //  渲染用户信息
   const renderUserInfo = ({ gitHub, CSDN, email }: Partial<CurrentUser>) => {

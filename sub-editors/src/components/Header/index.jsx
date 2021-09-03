@@ -11,8 +11,6 @@ class Header extends React.Component {
 
   componentDidMount = () => {
     this.props.history.listen((location, action) => {
-      console.log(location);
-      console.log('action', action);
       if (action === 'REPLACE') {
         this.setState({
           current: location.pathname,
