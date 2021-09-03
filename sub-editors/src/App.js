@@ -23,7 +23,7 @@ export const routerConfig = [
 ];
 
 export default function Main() {
-  const base = window.__POWERED_BY_QIANKUN__ ? '/tensorflow' : '/'
+  const base = window.__POWERED_BY_QIANKUN__ ? '/tensorflow/' : '/';
   return (
     <Router basename={base}>
       <App>
@@ -32,7 +32,7 @@ export default function Main() {
           {routerConfig.map(({ path, component }) => (
             <Route key={path} exact path={path} component={props => <Dynamic component={component} {...props} />} />
           ))}
-          <Redirect exact from='/' to={routerConfig[0].path} />
+          <Redirect exact from="/" to={routerConfig[0].path} />
         </Switch>
       </App>
     </Router>

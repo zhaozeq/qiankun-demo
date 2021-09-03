@@ -1,16 +1,18 @@
 import { defineConfig } from 'umi';
+import { name } from './package.json';
 
-const BASE = '/blog';
+const isDev = process.env.NODE_ENV === 'development';
 
 export default defineConfig({
-  base: BASE,
-  publicPath: BASE + '/',
-  outputPath: '../build' + BASE,
+  base: `/${name}`,
+  publicPath: `/${name}/`,
+  outputPath: `../build/${name}`,
   alias: { '@/*': 'src/*' },
   nodeModulesTransform: {
     type: 'none',
   },
-  mfsu: {},
+  devtool: isDev ? 'cheap-module-source-map' : false,
+  mfsu: { mfName: name },
   routes: [
     { path: '/', redirect: '/home' },
     { path: '/home', component: '@/pages/account/center' },

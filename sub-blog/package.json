@@ -1,5 +1,5 @@
 {
-  "name": "app1",
+  "name": "blog",
   "scripts": {
     "start": "umi dev",
     "build": "umi build",

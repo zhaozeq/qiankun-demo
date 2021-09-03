@@ -11,7 +11,8 @@ const routesRemote = [
   },
   {
     name: 'tensorflow',
-    entry: 'http://localhost:7003/tensorflow/',
+    entry: 'http://localhost:7003/',
+    // to: 'tensorflow',
     props: {
       testProp: 'tensorflow',
     },
@@ -35,9 +36,12 @@ export const qiankun = {
       path: '/tensorflow',
       microApp: 'tensorflow',
       // microAppProps: {
-      //   autoSetLoading: boolean,
-      //   className: string,
-      //   wrapperClassName: string,
+      // autoSetLoading: true,
+      // className: 'appClassName',
+      // wrapperClassName: 'wrapperClass',
+      // loader: (loading) => {
+      //   return loading ? <div>runtime loading</div> : null;
+      // },
       // },
       menu: {
         name: 'tensorflow', // 兼容此写法

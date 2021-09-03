@@ -1,5 +1,4 @@
 import { defineConfig } from 'umi';
-import path from 'path';
 
 export default defineConfig({
   favicon: '/images/favicon-32x32-next.ico',
@@ -27,7 +26,7 @@ export default defineConfig({
       redirect: '/blog',
     },
   ],
-  mfsu: { mfName: 'mfMain' },
+  mfsu: { mfName: 'main' },
   fastRefresh: {},
   qiankun: {
     master: {},

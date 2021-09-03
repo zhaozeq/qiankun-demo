@@ -2,7 +2,7 @@ import request from '@/services/request';
 import type { CurrentUser, ListItemDataType } from './data.d';
 
 export async function queryCurrent(): Promise<{ data: CurrentUser }> {
-  return request('/currentUserDetail23', { errorHandler: (e) => console.log(e) });
+  return request('/currentUserDetail');
 }
 
 export async function queryFakeList(params: { count: number }): Promise<{ data: { list: ListItemDataType[] } }> {
