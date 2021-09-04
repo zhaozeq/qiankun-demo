@@ -1,27 +1,8 @@
 import { UserOutlined, BugOutlined } from '@ant-design/icons';
-// import request from './services/request';
+import request from './services/request';
 
-const routesRemote = [
-  {
-    name: 'blog',
-    entry: 'http://localhost:7002/blog/',
-    props: {
-      testProp: 'blog',
-    },
-  },
-  {
-    name: 'tensorflow',
-    entry: 'http://localhost:7003/',
-    // to: 'tensorflow',
-    props: {
-      testProp: 'tensorflow',
-    },
-  },
-];
-
-// export const qiankun = request('/apps').then((apps) => ({
-export const qiankun = {
-  apps: routesRemote,
+export const qiankun = request('/apps').then((apps) => ({
+  apps,
   lifeCycles: {},
   routes: [
     {
@@ -49,4 +30,4 @@ export const qiankun = {
       },
     },
   ],
-};
+}));

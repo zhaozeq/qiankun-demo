@@ -4,7 +4,6 @@ import './public-path';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
 function render(props) {
   const { container } = props;
   ReactDOM.render(
