@@ -1,0 +1,9 @@
+{
+  "public": "build",
+  "rewrites": [
+    {
+      "source": "/tensorflow/*",
+      "destination": "/tensorflow/index.html"
+    }
+  ]
+}

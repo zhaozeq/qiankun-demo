@@ -5,7 +5,7 @@ const paths = require('react-scripts/config/paths');
 const { name } = require('./package');
 const isDev = process.env.NODE_ENV === 'development';
 const DEFAULT_BROWSERS = ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 9'];
-const PUBLIC = '/';
+const PUBLIC = isDev ? '/' : `/${name}/`;
 
 // 除了config.output.path  还需修改appBuild路径
 paths.appBuild = path.join(path.dirname(paths.appBuild), '../build/editors');
@@ -108,7 +108,6 @@ module.exports = {
       config.watchContentBase = false;
       config.hot = false;
       config.liveReload = false;
-      config.publicPath = PUBLIC;
       return config;
     };
   },

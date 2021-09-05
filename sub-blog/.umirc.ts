@@ -4,8 +4,8 @@ import { name } from './package.json';
 const isDev = process.env.NODE_ENV === 'development';
 
 export default defineConfig({
-  base: `/${name}`,
-  publicPath: `/${name}/`,
+  base: `/self`,
+  publicPath: isDev ? '/' : `/${name}/`,
   outputPath: `../build/${name}`,
   alias: { '@/*': 'src/*' },
   nodeModulesTransform: {

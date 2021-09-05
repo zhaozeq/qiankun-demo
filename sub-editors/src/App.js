@@ -23,16 +23,16 @@ export const routerConfig = [
 ];
 
 export default function Main() {
-  const base = window.__POWERED_BY_QIANKUN__ ? '/tensorflow/' : '/';
+  const isInQiankun = !!window.__POWERED_BY_QIANKUN__;
   return (
-    <Router basename={base}>
+    <Router basename={isInQiankun ? '/tensorflow/' : '/'}>
       <App>
         <Switch>
           <Route exact name="iframe-script-runner" path="/iframe" component={Iframe} />
           {routerConfig.map(({ path, component }) => (
             <Route key={path} exact path={path} component={props => <Dynamic component={component} {...props} />} />
           ))}
-          <Redirect exact from="/" to={routerConfig[0].path} />
+          <Redirect exact={isInQiankun} from="/" to={routerConfig[0].path} />
         </Switch>
       </App>
     </Router>

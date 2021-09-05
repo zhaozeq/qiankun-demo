@@ -108,7 +108,6 @@ const Center: React.FC<RouteChildrenProps> = () => {
     { onError: (err) => console.log(err) },
   );
 
-  console.log(currentUser, 'currentUser');
   //  渲染用户信息
   const renderUserInfo = ({ gitHub, CSDN, email }: Partial<CurrentUser>) => {
     return (
